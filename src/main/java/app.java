@@ -6,7 +6,10 @@ public class app {
 
     private void run() {
         Child childSurvivor = new Child();
+        Child secondChild = new Child();
         Teacher teacherSurvivor = new Teacher();
+        Teacher secondTeacher = new Teacher();
+        Teacher thirdTeacher = new Teacher();
         Soldier soldierSurvivor = new Soldier();
         Tank tankZombie = new Tank();
         CommonInfect commonInfectZombie = new CommonInfect();
@@ -20,6 +23,12 @@ public class app {
         System.out.println(childSurvivor);
         System.out.println(" ");
         
+        // show that the names are incrementing
+        System.out.println(secondChild);
+        System.out.println(secondTeacher);
+        System.out.println(thirdTeacher);
+        
+        System.out.println(" ");
         System.out.println("Tank attacking");
         tankZombie.attack();
     }

@@ -1,7 +1,9 @@
 public class Child extends Character {
+	
+	static int i = 0;
 
     public Child() {
-        super(20, 2, "survivor");
+        super(20, 2, "survivor", "Child " + i++);
     }
 
     @Override
