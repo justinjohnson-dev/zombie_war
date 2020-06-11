@@ -35,7 +35,7 @@ public class Character {
     }
 
     public void attack() {
-        System.out.println("I am attacking!");
+        System.out.println("A " + this.type + " is attacking!");
     }
 
     public String toString() {

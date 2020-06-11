@@ -1,7 +1,7 @@
 public class Child extends Character {
 
-    public Child(int health, int attack, String type) {
-        super(health, attack, type);
+    public Child() {
+        super(20, 2, "survivor");
     }
 
     @Override

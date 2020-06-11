@@ -1,7 +1,7 @@
 public class Teacher extends Character {
 
-    public Teacher(int health, int attack, String type) {
-        super(health, attack, type);
+    public Teacher() {
+        super(50, 5, "survivor");
     }
 
     @Override
