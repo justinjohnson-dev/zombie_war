@@ -118,7 +118,6 @@ public class app {
                     Character zombieAttacked = zombie_list.get(i);
                     // Check is zombieAttacked is still alive
                     if (zombieAttacked.getHealth() > 0) {
-                    	survivor.attack();
                         zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
                     }
                 }
@@ -127,7 +126,6 @@ public class app {
                     Character survivorAttacked = survivor_list.get(j);
                     // Check is survivorAttacked is still alive
                     if (survivorAttacked.getHealth() > 0) {
-                    	zombie.attack();
                         survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
                     }
                 }
