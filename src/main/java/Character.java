@@ -2,12 +2,14 @@ public class Character {
     protected int health;
     protected int attack;
     protected String type;
+    protected String name;
 
 
-    public Character(int health, int attack, String type) {
+    public Character(int health, int attack, String type, String name) {
         this.health = health;
         this.attack = attack;
         this.type = type;
+        this.name = name;
     }
 
     public int getHealth() {
@@ -33,12 +35,20 @@ public class Character {
     public void setType(String type) {
         this.type = type;
     }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void attack() {
         System.out.println("A " + this.type + " is attacking!");
     }
 
     public String toString() {
-        return ("Character Type: " + type + " Health: " + health + " Attack: " + attack);
+        return ("Character Type: " + type + " Health: " + health + " Attack: " + attack + " Name: " + name);
     }
 }
