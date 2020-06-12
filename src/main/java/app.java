@@ -94,7 +94,24 @@ public class app {
         while (numberOfHealthySurvivors > 0 && numberOfHealthyZombies > 0) {
 
             Character zombie = zombie_list.get(zIterator);
+            // Check is zombie is still alive, and select next zombie if dead
+            while (zombie.getHealth() <= 0) {
+            	zIterator++;
+            	if (zIterator >= zombie_list.size()) {
+            		zIterator = 0;
+            	}
+            	zombie = zombie_list.get(zIterator);
+            }
+            
             Character survivor = survivor_list.get(sIterator);
+            // Check is survivor is still alive, and select next survivor is dead
+            while (survivor.getHealth() <= 0) {
+            	sIterator++;
+            	if (sIterator >= survivor_list.size()) {
+            		sIterator = 0;
+            	}
+            	survivor = survivor_list.get(sIterator);
+            }
 
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
                 System.out.println(numberOfHealthyZombies);
@@ -104,11 +121,8 @@ public class app {
                     Character zombieAttacked = zombie_list.get(i);
                     // Check is zombieAttacked is still alive
                     if (zombieAttacked.getHealth() > 0) {
-                    	// Check is survivor is still alive
-                        if (survivor.getHealth() > 0) {
-                        	survivor.attack();
-                            zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
-                        }
+                    	survivor.attack();
+                        zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
                     }
                 }
 
@@ -116,11 +130,8 @@ public class app {
                     Character survivorAttacked = survivor_list.get(j);
                     // Check is survivorAttacked is still alive
                     if (survivorAttacked.getHealth() > 0) {
-                    	// Check is zombie is still alive
-                        if (zombie.getHealth() > 0) {
-                        	zombie.attack();
-                            survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
-                        }
+                    	zombie.attack();
+                        survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
                     }
                 }
                 
