@@ -85,13 +85,16 @@ public class app {
         // grabbing size of list so we can handle our break condition for our while loop
         int numberOfHealthyZombies = zombie_list.size();
         int numberOfHealthySurvivors = survivor_list.size();
+        
+        // Separate iterators for zombie and survivor lists
+        int zIterator = 0;
+        int sIterator = 0;
 
         // while loop to keep looping until list one list of characters health are all 0
         while (numberOfHealthySurvivors > 0 && numberOfHealthyZombies > 0) {
-            int iterator = 0;
 
-            Character zombie = zombie_list.get(iterator);
-            Character survivor = survivor_list.get(iterator);
+            Character zombie = zombie_list.get(zIterator);
+            Character survivor = survivor_list.get(sIterator);
 
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
                 System.out.println(numberOfHealthyZombies);
@@ -99,21 +102,41 @@ public class app {
 
                 for (int i = 0; i < zombie_list.size(); i++) {
                     Character zombieAttacked = zombie_list.get(i);
-                    survivor.attack();
-                    zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
+                    // Check is zombieAttacked is still alive
+                    if (zombieAttacked.getHealth() > 0) {
+                    	// Check is survivor is still alive
+                        if (survivor.getHealth() > 0) {
+                        	survivor.attack();
+                            zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
+                        }
+                    }
                 }
 
                 for (int j = 0; j < survivor_list.size(); j++) {
                     Character survivorAttacked = survivor_list.get(j);
-                    zombie.attack();
-                    survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
+                    // Check is survivorAttacked is still alive
+                    if (survivorAttacked.getHealth() > 0) {
+                    	// Check is zombie is still alive
+                        if (zombie.getHealth() > 0) {
+                        	zombie.attack();
+                            survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
+                        }
+                    }
                 }
 
                 numberOfHealthyZombies--;
                 numberOfHealthySurvivors--;
             }
-
-            iterator++;
+            
+            // Check if index out of bounds, reset iterator
+            zIterator++;
+            if (zIterator >= zombie_list.size()) {
+            	zIterator = 0;
+            }
+            sIterator++;
+            if (sIterator >= survivor_list.size()) {
+            	sIterator = 0;
+            }
         }
 
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
