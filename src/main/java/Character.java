@@ -45,7 +45,8 @@ public class Character {
     }
 
     public void attack() {
-        System.out.println("A " + this.type + " is attacking!");
+        //System.out.println("A " + this.type + " is attacking!");
+    	System.out.println(getName() + " is attacking!");
     }
 
     public String toString() {
