@@ -87,13 +87,13 @@ public class app {
         int numberOfHealthySurvivors = survivor_list.size();
 
         // while loop to keep looping until list one list of characters health are all 0
-        while (numberOfHealthySurvivors >= 0 && numberOfHealthyZombies >= 0) {
+        while (numberOfHealthySurvivors > 0 && numberOfHealthyZombies > 0) {
             int iterator = 0;
 
             Character zombie = zombie_list.get(iterator);
             Character survivor = survivor_list.get(iterator);
 
-            if (zombie.getHealth() >= 0 || survivor.getHealth() >= 0) {
+            if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
                 System.out.println(numberOfHealthyZombies);
                 System.out.println(numberOfHealthySurvivors);
 
