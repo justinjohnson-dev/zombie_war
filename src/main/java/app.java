@@ -8,35 +8,35 @@ public class app {
     }
 
     private void run() {
-        // generate the two character arrays
-        Character[] zombies = generateCharacters("zombie");
-        Character[] survivors = generateCharacters("survivor");
+        // generate the two character Lists
+        List<Character> zombies = generateCharacters("zombie");
+        List<Character> survivors = generateCharacters("survivor");
 
-        System.out.println("We have " + survivors.length + " survivors trying to make it to safety.");
-        System.out.println("But there are " + zombies.length + " zombies waiting for them.");
+        System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
+        System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
 
         String warWinner = fight(zombies, survivors);
         System.out.println(warWinner);
     }
 
-    // generate an array of characters between 5 and 20 elements in length
-    private Character[] generateCharacters(String charType) {
-        Character[] characters = new Character[getRandom(5, 20)];
+    // generate an array of characters between 5 and 20 elements in length and fill with random characters
+    private List<Character> generateCharacters(String charType) {
+        List<Character> characters = new ArrayList<Character>();
         if (charType.contentEquals("zombie")) {
             // initialize counter variables
             int tankCount = 0;
             int commonCount = 0;
             // generate the random zombies that will fill the array
-            for (int i = 0; i < characters.length; i++) {
+            for (int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
                 int randomZombie = getRandom(0, 1);
                 switch (randomZombie) {
                     case 0:
-                        characters[i] = new CommonInfect();
+                        characters.add(new CommonInfect());
                         commonCount++;
                         break;
                     case 1:
-                        characters[i] = new Tank();
+                        characters.add(new Tank());
                         tankCount++;
                         break;
                     default:
@@ -49,20 +49,20 @@ public class app {
             int teacherCount = 0;
             int soldierCount = 0;
             // generate the random survivors that will fill the array
-            for (int i = 0; i < characters.length; i++) {
+            for(int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
-                int randomSurvivor = getRandom(0, 2);
-                switch (randomSurvivor) {
+                int randomSurvivor = getRandom(0,2);
+                switch(randomSurvivor) {
                     case 0:
-                        characters[i] = new Child();
+                        characters.add(new Child());
                         childCount++;
                         break;
                     case 1:
-                        characters[i] = new Teacher();
+                        characters.add(new Teacher());
                         teacherCount++;
                         break;
                     case 2:
-                        characters[i] = new Soldier();
+                        characters.add(new Soldier());
                         soldierCount++;
                         break;
                     default:
@@ -76,15 +76,12 @@ public class app {
         return characters;
     }
 
-    // I figured it would be easier and cleaner to have a function to get the random numbers
-    // than it would have been to use Math.random() everywhere.
+    // generate a random number within a set range
     private int getRandom(int min, int max) {
-        return (int) (Math.random() * (max - min + 1) + min);
+        return (int)(Math.random() * (max - min + 1) + min);
     }
 
-    private String fight(Character[] zombies, Character[] survivors) {
-        List<Character> zombie_list = convertArrayToList(zombies);
-        List<Character> survivor_list = convertArrayToList(survivors);
+    private String fight(List<Character> zombie_list, List<Character> survivor_list) {
 
         // grabbing size of list so we can handle our break condition for our while loop
         int numberOfHealthyZombies = zombie_list.size();
@@ -125,22 +122,5 @@ public class app {
         } else {
             return "Zombies won!!";
         }
-    }
-
-    // Generic function to convert an Array to List
-    // Helper function retrieved from: https://www.geeksforgeeks.org/program-to-convert-array-to-list-in-java/
-    public static <T> List<T> convertArrayToList(T array[]) {
-
-        // Create an empty List
-        List<T> list = new ArrayList<>();
-
-        // Iterate through the array
-        for (T t : array) {
-            // Add each element into the list
-            list.add(t);
-        }
-
-        // Return the converted List
-        return list;
     }
 }
