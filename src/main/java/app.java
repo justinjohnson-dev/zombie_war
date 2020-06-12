@@ -176,7 +176,7 @@ public class app {
                     zombieCounter++;
                 }
             }
-            return "It seems " + zombieCounter +  " have made it to safety.";
+            return "It seems " + zombieCounter +  " zombies are still standing, all survivors are dead.";
         }
     }
 }
