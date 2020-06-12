@@ -86,33 +86,38 @@ public class app {
         List<Character> zombie_list = convertArrayToList(zombies);
         List<Character> survivor_list = convertArrayToList(survivors);
 
-        // some while loop to keep looping until list one list of characters health are all 0
+        // grabbing size of list so we can handle our break condition for our while loop
         int numberOfHealthyZombies = zombie_list.size();
         int numberOfHealthySurvivors = survivor_list.size();
 
+        // while loop to keep looping until list one list of characters health are all 0
         while (numberOfHealthySurvivors >= 0 && numberOfHealthyZombies >= 0) {
-            Character zombie = zombie_list.get(0);
-            Character survivorFighter = survivor_list.get(0);
+            int iterator = 0;
 
-            if (zombie.getHealth() >= 0 || survivorFighter.getHealth() >= 0) {
+            Character zombie = zombie_list.get(iterator);
+            Character survivor = survivor_list.get(iterator);
+
+            if (zombie.getHealth() >= 0 || survivor.getHealth() >= 0) {
                 System.out.println(numberOfHealthyZombies);
                 System.out.println(numberOfHealthySurvivors);
 
-                for (int j = 0; j < survivor_list.size(); j++) {
-                    Character survivor = survivor_list.get(j);
-                    zombie.attack();
-                    survivor.setHealth(survivor.getHealth() - zombie.getAttack());
-                }
-
                 for (int i = 0; i < zombie_list.size(); i++) {
                     Character zombieAttacked = zombie_list.get(i);
-                    survivorFighter.attack();
-                    zombieAttacked.setHealth(zombieAttacked.getHealth() - survivorFighter.getAttack());
+                    survivor.attack();
+                    zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
+                }
+
+                for (int j = 0; j < survivor_list.size(); j++) {
+                    Character survivorAttacked = survivor_list.get(j);
+                    zombie.attack();
+                    survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
                 }
 
                 numberOfHealthyZombies--;
                 numberOfHealthySurvivors--;
             }
+
+            iterator++;
         }
 
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
