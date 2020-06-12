@@ -124,7 +124,7 @@ public class app {
                     }
                 }
 
-                numberOfHealthyZombies--;
+                numberOfHealthyZombies--; 
                 numberOfHealthySurvivors--;
             }
             
