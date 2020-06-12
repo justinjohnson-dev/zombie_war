@@ -114,14 +114,10 @@ public class app {
             }
 
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
-                System.out.println(numberOfHealthyZombies);
-                System.out.println(numberOfHealthySurvivors);
-
                 for (int i = 0; i < zombie_list.size(); i++) {
                     Character zombieAttacked = zombie_list.get(i);
                     // Check is zombieAttacked is still alive
                     if (zombieAttacked.getHealth() > 0) {
-                    	survivor.attack();
                         zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
                     }
                 }
@@ -130,7 +126,6 @@ public class app {
                     Character survivorAttacked = survivor_list.get(j);
                     // Check is survivorAttacked is still alive
                     if (survivorAttacked.getHealth() > 0) {
-                    	zombie.attack();
                         survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
                     }
                 }
@@ -165,9 +160,23 @@ public class app {
         }
 
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
-            return "Survivors won!!";
+            int survivorCounter = 0;
+            for (int i = 0; i < survivor_list.size(); i++) {
+                Character survivor = survivor_list.get(i);
+                if (survivor.getHealth() > 0) {
+                    survivorCounter++;
+                }
+            }
+            return "It seems " + survivorCounter +  " have made it to safety.";
         } else {
-            return "Zombies won!!";
+            int zombieCounter = 0;
+            for (int i = 0; i < zombie_list.size(); i++) {
+                Character zombie = zombie_list.get(i);
+                if (zombie.getHealth() > 0) {
+                    zombieCounter++;
+                }
+            }
+            return "It seems " + zombieCounter +  " have made it to safety.";
         }
     }
 }
