@@ -82,7 +82,6 @@ public class app {
     }
 
     private String fight(List<Character> zombie_list, List<Character> survivor_list) {
-
         // grabbing size of list so we can handle our break condition for our while loop
         int numberOfHealthyZombies = zombie_list.size();
         int numberOfHealthySurvivors = survivor_list.size();
