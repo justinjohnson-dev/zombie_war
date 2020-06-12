@@ -123,9 +123,23 @@ public class app {
                         }
                     }
                 }
-
-                numberOfHealthyZombies--; 
-                numberOfHealthySurvivors--;
+                
+                numberOfHealthySurvivors = 0;
+                numberOfHealthyZombies = 0;
+                
+                // Tally living survivors
+                for (int i = 0; i < survivor_list.size(); i++) {
+                	if (survivor_list.get(i).getHealth() > 0) {
+                		numberOfHealthySurvivors++;
+                	}
+                }
+                
+                // Tally living zombies
+                for (int j = 0; j < zombie_list.size(); j++) {
+                	if (zombie_list.get(j).getHealth() > 0) {
+                		numberOfHealthyZombies++;
+                	}
+                }
             }
             
             // Check if index out of bounds, reset iterator
