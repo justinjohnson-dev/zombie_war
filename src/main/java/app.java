@@ -3,13 +3,6 @@ import java.util.List;
 
 public class app {
 	
-	// Type counts for use in generateCharacters() and releaseTwoReporting()
-	public int tankCount;
-	public int commonCount;
-	public int childCount;
-	public int teacherCount;
-	public int soldierCount;
-	
     public static void main(String[] args) {
         app obj = new app();
         obj.run();
@@ -38,8 +31,8 @@ public class app {
         
         if (charType.contentEquals("zombie")) {
             // initialize counter variables
-        	tankCount = 0;
-        	commonCount = 0;
+        	int tankCount = 0;
+        	int commonCount = 0;
             // generate the random zombies that will fill the array
             for (int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
@@ -54,12 +47,14 @@ public class app {
                 	System.out.println("ERROR: The random number was not between 0 and 3");
                 } // end if/else statement for getting the zombie types
             } // end for loop for populating the zombie array
+            int zombieSize = commonCount + tankCount;
+            System.out.println("But there are " + zombieSize + " zombies waiting for them (" + commonCount + " common infected, " + tankCount + " tanks)");
             
         } else if (charType.contentEquals("survivor")) {
             // initialize counter variables
-        	childCount = 0;
-        	teacherCount = 0;
-        	soldierCount = 0;
+        	int childCount = 0;
+        	int teacherCount = 0;
+        	int soldierCount = 0;
             // generate the random survivors that will fill the array
             for(int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
@@ -81,10 +76,13 @@ public class app {
                         System.out.println("The random character was neither 0, 1, nor 2");
                 } // end switch statement for getting the survivor types
             } // end for loop for populating the survivor array
+            int survivorSize = childCount + teacherCount + soldierCount;
+            System.out.println("We have " + survivorSize + " survivors trying to make it to safety (" + childCount + " children, " + teacherCount + " teachers, " + soldierCount + " soldiers)");
         } else {
             // the type passed to the function was neither zombies nor survivors
             System.out.println(charType + " is an invalid character type.");
         }
+        
         return characters;
     }
     
@@ -132,17 +130,25 @@ public class app {
             }
             
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
+            	// Survivor attacks
                 for (int i = 0; i < zombie_list.size(); i++) {
                 	// make sure the zombie is alive before allowing the survivor to attack
                 	if (zombie_list.get(i).getHealth() > 0) {
                 		attack(survivor, zombie_list.get(i));
+                		if (zombie_list.get(i).getHealth() <= 0) {
+                			System.out.println(survivor.getName() + " killed " + zombie_list.get(i).getName());
+                		}
                 	}
                 }
-
+                
+                // Zombie attacks
                 for (int i = 0; i < survivor_list.size(); i++) {
                 	// make sure the survivor is alive before allowing the zombie to attack
                 	if (survivor_list.get(i).getHealth() > 0) {
                 		attack(zombie, survivor_list.get(i));
+                		if (survivor_list.get(i).getHealth() <= 0) {
+                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName());
+                		}
                 	}
                 }
                 
@@ -174,8 +180,6 @@ public class app {
             	sIterator = 0;
             }
         }
-
-        releaseTwoReporting(zombie_list, survivor_list);
 
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
             int survivorCounter = 0;
@@ -211,15 +215,5 @@ public class app {
 	        	victim.setHealth(victim.getHealth() - attacker.getAttack());
 	        }
 	    }
-    }
-    
-    /************************
-     * RELEASE TWO REPORTING
-     ************************/
-    private void releaseTwoReporting(List<Character> zombie_list, List<Character> survivor_list) {
-
-        System.out.println("We have " + survivor_list.size() + " survivors trying to make it to safety (" + childCount + " children, " + teacherCount + " teachers, " + soldierCount + " soldiers)");
-        System.out.println("But there are " + zombie_list.size() + " zombies waiting for them (" + commonCount + " common infected, " + tankCount + " tanks)");
-        
     }
 }
