@@ -126,7 +126,7 @@ public class app {
             	if (sIterator >= survivor_list.size()) {
             		sIterator = 0;
             	}
-            	survivor = survivor_list.get(sIterator);
+            	survivor = survivor_list.get(sIterator); 
             }
             
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
