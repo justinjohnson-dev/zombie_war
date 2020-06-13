@@ -12,10 +12,10 @@ public class app {
         List<Character> zombies = generateCharacters("zombie");
         List<Character> survivors = generateCharacters("survivor");
 
-        System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
-        System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
+//        System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
+//        System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
 
-        System.out.println(fight(zombies, survivors));
+        fight(zombies, survivors);
     }
 
     // generate an array of characters between 5 and 20 elements in length and fill with random characters
@@ -29,11 +29,11 @@ public class app {
             // generate the random zombies that will fill the array
             for (int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
-                int randomZombie = getRandom(0, 3);
-                if (randomZombie >= 0 && randomZombie <= 2) {
+                int randomZombie = getRandom(0, 4);
+                if (randomZombie >= 0 && randomZombie <= 3) {
                     characters.add(new CommonInfect());
                     commonCount++;
-                } else if (randomZombie == 3) {
+                } else if (randomZombie == 4) {
                     characters.add(new Tank());
                     tankCount++;
                 } else {
@@ -155,6 +155,8 @@ public class app {
             }
         }
 
+        releaseTwoReporting(zombie_list, survivor_list);
+
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
             int survivorCounter = 0;
             for (int i = 0; i < survivor_list.size(); i++) {
@@ -186,5 +188,37 @@ public class app {
 	        	victim.setHealth(victim.getHealth() - attacker.getAttack());
 	        }
 	    }
+    }
+
+    private void releaseTwoReporting(List<Character> zombie_list, List<Character> survivor_list) {
+
+        int children = 0;
+        int teachers = 0;
+        int soldiers = 0;
+        for (int i = 0; i < survivor_list.size(); i++) {
+            Character survivor = survivor_list.get(i);
+            if (survivor.getName().split(" ")[0].equals("Child")) {
+                children++;
+            } else if (survivor.getName().split(" ")[0].equals("Teacher")) {
+                teachers++;
+            } else {
+                soldiers++;
+            }
+        }
+
+        int infected = 0;
+        int tanks = 0;
+        for (int i = 0; i < zombie_list.size(); i++) {
+            Character zombie = zombie_list.get(i);
+            if (zombie.getName().split(" ")[0].equals("CommonInfect")) {
+                infected++;
+            } else {
+                tanks++;
+            }
+        }
+
+        System.out.println("We have " + survivor_list.size() + " survivors trying to make it to safety (" + children + " children, " + teachers + " teachers, " + soldiers + " soldiers)");
+        System.out.println("But there are " + zombie_list.size() + " zombies waiting for them (" + infected + " common infected, " + tanks + " tanks)");
+        
     }
 }
