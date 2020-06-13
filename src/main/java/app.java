@@ -3,6 +3,7 @@ import java.util.List;
 
 public class app {
 	
+	// Type counts for use in generateCharacters() and releaseTwoReporting()
 	public int tankCount;
 	public int commonCount;
 	public int childCount;
