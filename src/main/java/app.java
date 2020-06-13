@@ -13,8 +13,8 @@ public class app {
      ***********/
     private void run() {
         // generate the two character Lists
-        List<Character> zombies = generateCharacters("zombie");
         List<Character> survivors = generateCharacters("survivor");
+        List<Character> zombies = generateCharacters("zombie");
 
 //        System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
 //        System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
