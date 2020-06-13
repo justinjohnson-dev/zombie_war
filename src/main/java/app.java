@@ -15,21 +15,7 @@ public class app {
         System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
         System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
 
-        String warWinner = fight(zombies, survivors);
-        System.out.println(warWinner);
-        
-        
-        System.out.println(" ");
-        // testing the health at the end
-        System.out.println("ZOMBIES:");
-        for (int i=0; i<zombies.size(); i++) {
-        	System.out.println(zombies.get(i).getName() + " and " + zombies.get(i).getHealth());
-        }
-        System.out.println(" ");
-        System.out.println("SURVIVORS:");
-        for (int i=0; i<survivors.size(); i++) {
-        	System.out.println(survivors.get(i).getName() + " and " + survivors.get(i).getHealth());
-        }
+        System.out.println(fight(zombies, survivors));
     }
 
     // generate an array of characters between 5 and 20 elements in length and fill with random characters
@@ -127,11 +113,17 @@ public class app {
             
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
                 for (int i = 0; i < zombie_list.size(); i++) {
-                    attack(survivor, zombie_list.get(i));
+                	// make sure the zombie is alive before allowing the survivor to attack
+                	if (zombie_list.get(i).getHealth() > 0) {
+                		attack(survivor, zombie_list.get(i));
+                	}
                 }
 
-                for (int j = 0; j < survivor_list.size(); j++) {
-                    attack(zombie, survivor_list.get(j));
+                for (int i = 0; i < survivor_list.size(); i++) {
+                	// make sure the survivor is alive before allowing the zombie to attack
+                	if (survivor_list.get(i).getHealth() > 0) {
+                		attack(zombie, survivor_list.get(i));
+                	}
                 }
                 
                 numberOfHealthySurvivors = 0;
@@ -180,14 +172,13 @@ public class app {
                     zombieCounter++;
                 }
             }
-            return "ZOMBIES WIN! " + zombieCounter +  " zombie(s) killed all of the survivors";
+            return "ZOMBIES WIN! There are " + zombieCounter +  " zombie(s) left.";
         }
     }
     
     // check if the victim is still alive;
     private void attack(Character attacker, Character victim) {
-	    if (victim.getHealth() > 0) {
-	    	attacker.attack();
+    	if (victim.getHealth() > 0) {
 	    	// make sure the victim's health will not go below 0 when attacked
 	        if (victim.getHealth() - attacker.getAttack() < 0) {
 	        	victim.setHealth(0);
