@@ -15,13 +15,13 @@ public class app {
         System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
         System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
 
-        String warWinner = fight(zombies, survivors);
-        System.out.println(warWinner);
+        System.out.println(fight(zombies, survivors));
     }
 
     // generate an array of characters between 5 and 20 elements in length and fill with random characters
     private List<Character> generateCharacters(String charType) {
         List<Character> characters = new ArrayList<Character>();
+        
         if (charType.contentEquals("zombie")) {
             // initialize counter variables
             int tankCount = 0;
@@ -29,20 +29,18 @@ public class app {
             // generate the random zombies that will fill the array
             for (int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
-                int randomZombie = getRandom(0, 1);
-                switch (randomZombie) {
-                    case 0:
-                        characters.add(new CommonInfect());
-                        commonCount++;
-                        break;
-                    case 1:
-                        characters.add(new Tank());
-                        tankCount++;
-                        break;
-                    default:
-                        System.out.println("The random character was neither 0 nor 1");
-                } // end switch statement for getting the zombie types
+                int randomZombie = getRandom(0, 3);
+                if (randomZombie >= 0 && randomZombie <= 2) {
+                    characters.add(new CommonInfect());
+                    commonCount++;
+                } else if (randomZombie == 3) {
+                    characters.add(new Tank());
+                    tankCount++;
+                } else {
+                	System.out.println("ERROR: The random number was not between 0 and 3");
+                } // end if/else statement for getting the zombie types
             } // end for loop for populating the zombie array
+            
         } else if (charType.contentEquals("survivor")) {
             // initialize counter variables
             int childCount = 0;
@@ -112,22 +110,20 @@ public class app {
             	}
             	survivor = survivor_list.get(sIterator);
             }
-
+            
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
                 for (int i = 0; i < zombie_list.size(); i++) {
-                    Character zombieAttacked = zombie_list.get(i);
-                    // Check is zombieAttacked is still alive
-                    if (zombieAttacked.getHealth() > 0) {
-                        zombieAttacked.setHealth(zombieAttacked.getHealth() - survivor.getAttack());
-                    }
+                	// make sure the zombie is alive before allowing the survivor to attack
+                	if (zombie_list.get(i).getHealth() > 0) {
+                		attack(survivor, zombie_list.get(i));
+                	}
                 }
 
-                for (int j = 0; j < survivor_list.size(); j++) {
-                    Character survivorAttacked = survivor_list.get(j);
-                    // Check is survivorAttacked is still alive
-                    if (survivorAttacked.getHealth() > 0) {
-                        survivorAttacked.setHealth(survivorAttacked.getHealth() - zombie.getAttack());
-                    }
+                for (int i = 0; i < survivor_list.size(); i++) {
+                	// make sure the survivor is alive before allowing the zombie to attack
+                	if (survivor_list.get(i).getHealth() > 0) {
+                		attack(zombie, survivor_list.get(i));
+                	}
                 }
                 
                 numberOfHealthySurvivors = 0;
@@ -167,7 +163,7 @@ public class app {
                     survivorCounter++;
                 }
             }
-            return "It seems " + survivorCounter +  " have made it to safety.";
+            return "It seems " + survivorCounter +  " survivors have made it to safety.";
         } else {
             int zombieCounter = 0;
             for (int i = 0; i < zombie_list.size(); i++) {
@@ -176,7 +172,19 @@ public class app {
                     zombieCounter++;
                 }
             }
-            return "It seems " + zombieCounter +  " have made it to safety.";
+            return "ZOMBIES WIN! There are " + zombieCounter +  " zombie(s) left.";
         }
+    }
+    
+    // check if the victim is still alive;
+    private void attack(Character attacker, Character victim) {
+    	if (victim.getHealth() > 0) {
+	    	// make sure the victim's health will not go below 0 when attacked
+	        if (victim.getHealth() - attacker.getAttack() < 0) {
+	        	victim.setHealth(0);
+	        } else { // the victim's health will not go below 0 when attacked
+	        	victim.setHealth(victim.getHealth() - attacker.getAttack());
+	        }
+	    }
     }
 }
