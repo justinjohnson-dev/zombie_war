@@ -2,11 +2,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class app {
+	
+	public int tankCount;
+	public int commonCount;
+	public int childCount;
+	public int teacherCount;
+	public int soldierCount;
+	
     public static void main(String[] args) {
         app obj = new app();
         obj.run();
     }
-
+    
+    /***********
+     * RUN
+     ***********/
     private void run() {
         // generate the two character Lists
         List<Character> zombies = generateCharacters("zombie");
@@ -15,17 +25,20 @@ public class app {
 //        System.out.println("We have " + survivors.size() + " survivors trying to make it to safety.");
 //        System.out.println("But there are " + zombies.size() + " zombies waiting for them.");
 
-        fight(zombies, survivors);
+        System.out.println(fight(zombies, survivors));
     }
-
+    
+    /*********************
+     * GENERATE CHARACTERS
+     *********************/
     // generate an array of characters between 5 and 20 elements in length and fill with random characters
     private List<Character> generateCharacters(String charType) {
         List<Character> characters = new ArrayList<Character>();
         
         if (charType.contentEquals("zombie")) {
             // initialize counter variables
-            int tankCount = 0;
-            int commonCount = 0;
+        	tankCount = 0;
+        	commonCount = 0;
             // generate the random zombies that will fill the array
             for (int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
@@ -43,9 +56,9 @@ public class app {
             
         } else if (charType.contentEquals("survivor")) {
             // initialize counter variables
-            int childCount = 0;
-            int teacherCount = 0;
-            int soldierCount = 0;
+        	childCount = 0;
+        	teacherCount = 0;
+        	soldierCount = 0;
             // generate the random survivors that will fill the array
             for(int i=0; i<getRandom(5,20); i++) {
                 // get a random number that will dictate which character type is put into the array
@@ -73,12 +86,18 @@ public class app {
         }
         return characters;
     }
-
+    
+    /*************
+     * GET RANDOM
+     *************/
     // generate a random number within a set range
     private int getRandom(int min, int max) {
         return (int)(Math.random() * (max - min + 1) + min);
     }
-
+    
+    /**********
+     * FIGHT
+     **********/
     private String fight(List<Character> zombie_list, List<Character> survivor_list) {
         // grabbing size of list so we can handle our break condition for our while loop
         int numberOfHealthyZombies = zombie_list.size();
@@ -102,7 +121,7 @@ public class app {
             }
             
             Character survivor = survivor_list.get(sIterator);
-            // Check is survivor is still alive, and select next survivor is dead
+            // Check is survivor is still alive, and select next survivor if dead
             while (survivor.getHealth() <= 0) {
             	sIterator++;
             	if (sIterator >= survivor_list.size()) {
@@ -178,8 +197,11 @@ public class app {
         }
     }
     
-    // check if the victim is still alive;
+    /**********
+     * ATTACK
+     **********/
     private void attack(Character attacker, Character victim) {
+    	// check if the victim is still alive;
     	if (victim.getHealth() > 0) {
 	    	// make sure the victim's health will not go below 0 when attacked
 	        if (victim.getHealth() - attacker.getAttack() < 0) {
@@ -189,36 +211,14 @@ public class app {
 	        }
 	    }
     }
-
+    
+    /************************
+     * RELEASE TWO REPORTING
+     ************************/
     private void releaseTwoReporting(List<Character> zombie_list, List<Character> survivor_list) {
 
-        int children = 0;
-        int teachers = 0;
-        int soldiers = 0;
-        for (int i = 0; i < survivor_list.size(); i++) {
-            Character survivor = survivor_list.get(i);
-            if (survivor.getName().split(" ")[0].equals("Child")) {
-                children++;
-            } else if (survivor.getName().split(" ")[0].equals("Teacher")) {
-                teachers++;
-            } else {
-                soldiers++;
-            }
-        }
-
-        int infected = 0;
-        int tanks = 0;
-        for (int i = 0; i < zombie_list.size(); i++) {
-            Character zombie = zombie_list.get(i);
-            if (zombie.getName().split(" ")[0].equals("CommonInfect")) {
-                infected++;
-            } else {
-                tanks++;
-            }
-        }
-
-        System.out.println("We have " + survivor_list.size() + " survivors trying to make it to safety (" + children + " children, " + teachers + " teachers, " + soldiers + " soldiers)");
-        System.out.println("But there are " + zombie_list.size() + " zombies waiting for them (" + infected + " common infected, " + tanks + " tanks)");
+        System.out.println("We have " + survivor_list.size() + " survivors trying to make it to safety (" + childCount + " children, " + teacherCount + " teachers, " + soldierCount + " soldiers)");
+        System.out.println("But there are " + zombie_list.size() + " zombies waiting for them (" + commonCount + " common infected, " + tankCount + " tanks)");
         
     }
 }
