@@ -212,13 +212,24 @@ public class app {
             attacker.setWeapon();
             int weaponAccuracy = attacker.getWeapon().accuracy;
 
-            // I would assume we would want to inject logic here to handle whether we hit or missed the attack
+            // getting the accuracy of the weapon as a whole number (0-10)
+            int accuracyAsWholeNumber = weaponAccuracy / 10;
+            // generating random number between (0-10)
+            int randomNumber = getRandom(0, 10);
 
-	        if (victim.getHealth() - attacker.getWeapon().damage < 0) {
-	        	victim.setHealth(0);
-	        } else { // the victim's health will not go below 0 when attacked
-	        	victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
+            // if the random number <= the accuracy whole number we will attack
+            // EX. if the weapon accuracy was 50% -> the whole number would be 5 -> if randomNumber was between 0-5 we
+            // would attack, if randomNumber was between 6-10 we would miss
+            if (randomNumber < accuracyAsWholeNumber) {
+                if (victim.getHealth() - attacker.getWeapon().damage < 0) {
+                    victim.setHealth(0);
+                } else { // the victim's health will not go below 0 when attacked
+                    victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
+                }
+            } else {
+                System.out.println("Attack missed!");
             }
+
 	    }
     }
 }

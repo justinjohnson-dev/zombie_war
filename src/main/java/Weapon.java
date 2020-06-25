@@ -40,19 +40,19 @@ public class Weapon {
         int randomWeapon = getRandom(0,6);
         switch(randomWeapon) {
 			case 0:
-				return new Weapon("Shotgun", 65, 20);
+				return new Weapon("Shotgun", 65, 80);
 			case 1:
-				return new Weapon("Submachine Gun", 25, 40);
+				return new Weapon("Submachine Gun", 25, 80);
 			case 2:
-				return new Weapon("Assault Rifle", 50, 50);
+				return new Weapon("Assault Rifle", 50, 80);
 			case 3:
-				return new Weapon("Pistol", 20, 40);
+				return new Weapon("Pistol", 20, 80);
 			case 4:
-				return new Weapon("Axe", 30, 60);
+				return new Weapon("Axe", 30, 80);
 			case 5:
-				return new Weapon("Crowbar", 20, 60);
+				return new Weapon("Crowbar", 20, 80);
 			case 6:
-				return new Weapon("Frying Pan", 25, 50);
+				return new Weapon("Frying Pan", 25, 80);
         }
 
         return null;
