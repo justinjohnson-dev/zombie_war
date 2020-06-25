@@ -210,6 +210,10 @@ public class app {
     	if (victim.getHealth() > 0) {
 	    	// make sure the victim's health will not go below 0 when attacked
             attacker.setWeapon();
+            int weaponAccuracy = attacker.getWeapon().accuracy;
+
+            // I would assume we would want to inject logic here to handle whether we hit or missed the attack
+
 	        if (victim.getHealth() - attacker.getWeapon().damage < 0) {
 	        	victim.setHealth(0);
 	        } else { // the victim's health will not go below 0 when attacked
