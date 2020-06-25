@@ -136,7 +136,7 @@ public class app {
                 	if (zombie_list.get(i).getHealth() > 0) {
                 		attack(survivor, zombie_list.get(i));
                 		if (zombie_list.get(i).getHealth() <= 0) {
-                			System.out.println(survivor.getName() + " killed " + zombie_list.get(i).getName());
+                			System.out.println(survivor.getName() + " killed " + zombie_list.get(i).getName() + " With a " + survivor.getWeapon().type);
                 		}
                 	}
                 }
@@ -147,7 +147,7 @@ public class app {
                 	if (survivor_list.get(i).getHealth() > 0) {
                 		attack(zombie, survivor_list.get(i));
                 		if (survivor_list.get(i).getHealth() <= 0) {
-                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName());
+                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName() + " With a " + zombie.getWeapon().type);
                 		}
                 	}
                 }
@@ -209,11 +209,12 @@ public class app {
     	// check if the victim is still alive;
     	if (victim.getHealth() > 0) {
 	    	// make sure the victim's health will not go below 0 when attacked
-	        if (victim.getHealth() - attacker.getAttack() < 0) {
+            attacker.setWeapon();
+	        if (victim.getHealth() - attacker.getWeapon().damage < 0) {
 	        	victim.setHealth(0);
 	        } else { // the victim's health will not go below 0 when attacked
-	        	victim.setHealth(victim.getHealth() - attacker.getAttack());
-	        }
+	        	victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
+            }
 	    }
     }
 }

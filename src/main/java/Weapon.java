@@ -39,22 +39,23 @@ public class Weapon {
     	// get a random number that will dictate which weapon is given to the survivor
         int randomWeapon = getRandom(0,6);
         switch(randomWeapon) {
-        case 0:
-        	weapon = new Weapon("Shotgun", 65, 20);
-        case 1:
-        	weapon = new Weapon("Submachine Gun", 25, 40);
-        case 2:
-        	weapon = new Weapon("Assault Rifle", 50, 50);
-        case 3:
-        	weapon = new Weapon("Pistol", 20, 40);
-        case 4:
-        	weapon = new Weapon("Axe", 30, 60);
-        case 5:
-        	weapon = new Weapon("Crowbar", 20, 60);
-        case 6:
-        	weapon = new Weapon("Frying Pan", 25, 50);
+			case 0:
+				return new Weapon("Shotgun", 65, 20);
+			case 1:
+				return new Weapon("Submachine Gun", 25, 40);
+			case 2:
+				return new Weapon("Assault Rifle", 50, 50);
+			case 3:
+				return new Weapon("Pistol", 20, 40);
+			case 4:
+				return new Weapon("Axe", 30, 60);
+			case 5:
+				return new Weapon("Crowbar", 20, 60);
+			case 6:
+				return new Weapon("Frying Pan", 25, 50);
         }
-		return weapon;
+
+        return null;
 	}
 	
 	// generate a random number within a set range
