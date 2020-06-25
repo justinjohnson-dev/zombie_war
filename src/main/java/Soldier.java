@@ -1,9 +1,11 @@
-public class Soldier extends Survivor {
+public class Soldier extends Character {
 	
+	Weapon weapon;
 	static int i = 0;
 
     public Soldier() {
-        super(100, 10, "survivor", "Soldier " + i++, weapon);
+        super(100, 10, "survivor", "Soldier " + i++);
+        weapon = Weapon.generateWeapon();
     }
 
     @Override
