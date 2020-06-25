@@ -215,10 +215,10 @@ public class app {
             // getting the accuracy of the weapon as a whole number (0-10)
             int accuracyAsWholeNumber = weaponAccuracy / 10;
             // generating random number between (0-10)
-            int randomNumber = getRandom(0, 10);
+            int randomNumber = getRandom(1, 10);
 
             // if the random number <= the accuracy whole number we will attack
-            // EX. if the weapon accuracy was 50% -> the whole number would be 5 -> if randomNumber was between 0-5 we
+            // EX. if the weapon accuracy was 50% -> the whole number would be 5 -> if randomNumber was between 1-5 we
             // would attack, if randomNumber was between 6-10 we would miss
             if (randomNumber < accuracyAsWholeNumber) {
                 if (victim.getHealth() - attacker.getWeapon().damage < 0) {
