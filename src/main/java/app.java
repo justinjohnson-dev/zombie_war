@@ -221,7 +221,7 @@ public class app {
             // if the random number <= the accuracy whole number we will attack
             // EX. if the weapon accuracy was 50% -> the whole number would be 5 -> if randomNumber was between 1-5 we
             // would attack, if randomNumber was between 6-10 we would miss
-            if (randomNumber < accuracyAsWholeNumber) {
+            if (randomNumber < Math.round(accuracyAsWholeNumber)) {
                 if (victim.getHealth() - attacker.getWeapon().damage < 0) {
                     victim.setHealth(0);
                 } else { // the victim's health will not go below 0 when attacked

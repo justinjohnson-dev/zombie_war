@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad223c54-c639-42c5-ac13-3b433511093d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Weapon.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -44,12 +45,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6225" />
+          <entry key="java" value="6255" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6225" />
+          <entry key="JAVA" value="6255" />
         </counts>
       </usages-collector>
     </session>
@@ -59,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/app.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="121" column="62" lean-forward="true" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="20" />
+            <state relative-caret-position="405">
+              <caret line="131" column="33" lean-forward="true" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4071#4072#0" expanded="true" />
@@ -158,8 +159,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Weapon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+            <state relative-caret-position="335">
+              <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
               <folding>
                 <element signature="e#1398#1399#0" expanded="true" />
                 <element signature="e#1465#1466#0" expanded="true" />
@@ -501,8 +502,8 @@
         <option value="$PROJECT_DIR$/src/main/java/CommonInfect.java" />
         <option value="$PROJECT_DIR$/src/main/java/Soldier.java" />
         <option value="$PROJECT_DIR$/src/main/java/Tank.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Weapon.java" />
         <option value="$PROJECT_DIR$/src/main/java/app.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Weapon.java" />
       </list>
     </option>
   </component>
@@ -559,7 +560,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593130657648" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593131601208" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -603,12 +604,12 @@
       <workItem from="1591372423636" duration="639000" />
       <workItem from="1591571601611" duration="15000" />
       <workItem from="1591839760742" duration="2129000" />
-      <workItem from="1593124038630" duration="6613000" />
+      <workItem from="1593124038630" duration="7476000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21449000" />
+    <option name="totallyTimeSpent" value="22312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -686,17 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Weapon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-          <folding>
-            <element signature="e#1398#1399#0" expanded="true" />
-            <element signature="e#1465#1466#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/CommonInfect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -750,10 +740,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+          <folding>
+            <element signature="e#1398#1399#0" expanded="true" />
+            <element signature="e#1465#1466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="121" column="62" lean-forward="true" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="20" />
+        <state relative-caret-position="405">
+          <caret line="131" column="33" lean-forward="true" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4071#4072#0" expanded="true" />
