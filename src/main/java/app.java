@@ -108,16 +108,26 @@ public class app {
 
         // while loop to keep looping until list one list of characters health are all 0
         while (numberOfHealthySurvivors > 0 && numberOfHealthyZombies > 0) {
+        	
+        	// TESTING
+        	System.out.println("                    START OF WHILE LOOP!");
 
             Character zombie = zombie_list.get(zIterator);
-            // Check is zombie is still alive, and select next zombie if dead
+            // Check if zombie is still alive, and select next zombie if dead
             while (zombie.getHealth() <= 0) {
             	zIterator++;
             	if (zIterator >= zombie_list.size()) {
             		zIterator = 0;
+            		
+            		//TESTING
+            		System.out.println("!!!!! all zombies are dead");
             	}
             	zombie = zombie_list.get(zIterator);
+            	
+            	// TESTING
+            	System.out.println("                    zombie " + zombie.getName() + " is chosen to attack.");
             }
+
             
             Character survivor = survivor_list.get(sIterator);
             // Check is survivor is still alive, and select next survivor if dead
@@ -129,30 +139,58 @@ public class app {
             	survivor = survivor_list.get(sIterator); 
             }
 
+            
+            
+            /*
+             * THE FOLLOWING CODE IS THE PROBLEM 
+             * 
+             * if you switch the order of zombie attacks and survivor attacks, you'll see that whichever runs second
+             * allows dead ones to attack some of the time
+             */
+            
+            
+            
             survivor.setWeapon();
             zombie.setWeapon();
-            if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
-            	// Survivor attacks
-                for (int i = 0; i < zombie_list.size(); i++) {
-                	// make sure the zombie is alive before allowing the survivor to attack
-                	if (zombie_list.get(i).getHealth() > 0) {
-                		attack(survivor, zombie_list.get(i));
-                		if (zombie_list.get(i).getHealth() <= 0) {
-                			System.out.println(survivor.getName() + " killed " + zombie_list.get(i).getName() + " With a " + survivor.getWeapon().type);
-                		}
-                	}
-                }
-                
+            if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {                
                 // Zombie attacks
                 for (int i = 0; i < survivor_list.size(); i++) {
                 	// make sure the survivor is alive before allowing the zombie to attack
                 	if (survivor_list.get(i).getHealth() > 0) {
                 		attack(zombie, survivor_list.get(i));
+                		
+                		// TESTING
+                		System.out.println("                    " + zombie.getName() + " is attacking.");
+                		
                 		if (survivor_list.get(i).getHealth() <= 0) {
-                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName() + " With a " + zombie.getWeapon().type);
+                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName() + " with a " + zombie.getWeapon().type);
                 		}
                 	}
                 }
+            	// Survivor attacks
+                for (int i = 0; i < zombie_list.size(); i++) {
+                	// make sure the zombie is alive before allowing the survivor to attack
+                	if (zombie_list.get(i).getHealth() > 0) {
+                		attack(survivor, zombie_list.get(i));
+                		
+                		// TESTING
+                		System.out.println("                    " + survivor.getName() + " is attacking.");
+                		
+                		if (zombie_list.get(i).getHealth() <= 0) {
+                			System.out.println(survivor.getName() + " killed " + zombie_list.get(i).getName() + " with a " + survivor.getWeapon().type);
+                		}
+                	}
+                }
+            
+                
+                
+                
+                
+                /*
+                 *  THE ABOVE CODE IS THE PROBLEM
+                 */
+                
+                
                 
                 numberOfHealthySurvivors = 0;
                 numberOfHealthyZombies = 0;
@@ -171,18 +209,10 @@ public class app {
                 	}
                 }
             }
-            
-            // Check if index out of bounds, reset iterator
-            zIterator++;
-            if (zIterator >= zombie_list.size()) {
-            	zIterator = 0;
-            }
-            sIterator++;
-            if (sIterator >= survivor_list.size()) {
-            	sIterator = 0;
-            }
-        }
 
+        }
+        
+        // Display which "team" wins
         if (numberOfHealthySurvivors > numberOfHealthyZombies) {
             int survivorCounter = 0;
             for (int i = 0; i < survivor_list.size(); i++) {
@@ -210,7 +240,6 @@ public class app {
     private void attack(Character attacker, Character victim) {
     	// check if the victim is still alive;
     	if (victim.getHealth() > 0) {
-	    	// make sure the victim's health will not go below 0 when attacked
             int weaponAccuracy = attacker.getWeapon().accuracy;
 
             // getting the accuracy of the weapon as a whole number (0-10)
@@ -222,13 +251,18 @@ public class app {
             // EX. if the weapon accuracy was 50% -> the whole number would be 5 -> if randomNumber was between 1-5 we
             // would attack, if randomNumber was between 6-10 we would miss
             if (randomNumber < Math.round(accuracyAsWholeNumber)) {
-                if (victim.getHealth() - attacker.getWeapon().damage < 0) {
+    	    	// make sure the victim's health will not go below 0 when attacked
+                if (victim.getHealth() - attacker.getWeapon().damage <= 0) {
                     victim.setHealth(0);
-                } else { // the victim's health will not go below 0 when attacked
+                    
+                    // TESTING
+                    victim.setName(victim.getName() + " IS DEAD!");
+                    
+                } else { // the victim doesn't die from the attack
                     victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
                 }
             } else {
-                System.out.println(attacker.getName() + "'s Attack missed!");
+                System.out.println(attacker.getName() + "'s Attack on " + victim.getName() + " missed!");
             }
 	    }
     }
