@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/app.java" line="138" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/app.java" line="140" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad223c54-c639-42c5-ac13-3b433511093d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,12 +44,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6166" />
+          <entry key="java" value="6225" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6166" />
+          <entry key="JAVA" value="6225" />
         </counts>
       </usages-collector>
     </session>
@@ -60,8 +59,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/app.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="117" column="17" lean-forward="true" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
+            <state relative-caret-position="345">
+              <caret line="121" column="62" lean-forward="true" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4071#4072#0" expanded="true" />
@@ -560,7 +559,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593129800637" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593130657648" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -604,12 +603,12 @@
       <workItem from="1591372423636" duration="639000" />
       <workItem from="1591571601611" duration="15000" />
       <workItem from="1591839760742" duration="2129000" />
-      <workItem from="1593124038630" duration="5703000" />
+      <workItem from="1593124038630" duration="6613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20539000" />
+    <option name="totallyTimeSpent" value="21449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
@@ -753,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="117" column="17" lean-forward="true" selection-start-line="117" selection-start-column="17" selection-end-line="117" selection-end-column="17" />
+        <state relative-caret-position="345">
+          <caret line="121" column="62" lean-forward="true" selection-start-line="131" selection-start-column="12" selection-end-line="131" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4071#4072#0" expanded="true" />

@@ -128,7 +128,9 @@ public class app {
             	}
             	survivor = survivor_list.get(sIterator); 
             }
-            
+
+            survivor.setWeapon();
+            zombie.setWeapon();
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {
             	// Survivor attacks
                 for (int i = 0; i < zombie_list.size(); i++) {
@@ -209,7 +211,6 @@ public class app {
     	// check if the victim is still alive;
     	if (victim.getHealth() > 0) {
 	    	// make sure the victim's health will not go below 0 when attacked
-            attacker.setWeapon();
             int weaponAccuracy = attacker.getWeapon().accuracy;
 
             // getting the accuracy of the weapon as a whole number (0-10)
@@ -229,7 +230,6 @@ public class app {
             } else {
                 System.out.println(attacker.getName() + "'s Attack missed!");
             }
-
 	    }
     }
 }
