@@ -214,7 +214,7 @@ public class app {
 
             // getting the accuracy of the weapon as a whole number (0-10)
             int accuracyAsWholeNumber = weaponAccuracy / 10;
-            // generating random number between (0-10)
+            // generating random number between (1-10)
             int randomNumber = getRandom(1, 10);
 
             // if the random number <= the accuracy whole number we will attack
@@ -227,7 +227,7 @@ public class app {
                     victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
                 }
             } else {
-                System.out.println("Attack missed!");
+                System.out.println(attacker.getName() + "'s Attack missed!");
             }
 
 	    }
