@@ -108,10 +108,6 @@ public class app {
 
         // while loop to keep looping until list one list of characters health are all 0
         while (numberOfHealthySurvivors > 0 && numberOfHealthyZombies > 0) {
-        	
-        	// TESTING
-        	System.out.println("                    START OF WHILE LOOP!");
-
             Character zombie = zombie_list.get(zIterator);
             // Check if zombie is still alive, and select next zombie if dead
             while (zombie.getHealth() <= 0) {
@@ -151,19 +147,18 @@ public class app {
             
             
             survivor.setWeapon();
-            zombie.setWeapon();
             if (zombie.getHealth() > 0 || survivor.getHealth() > 0) {                
                 // Zombie attacks
                 for (int i = 0; i < survivor_list.size(); i++) {
                 	// make sure the survivor is alive before allowing the zombie to attack
                 	if (survivor_list.get(i).getHealth() > 0) {
-                		attack(zombie, survivor_list.get(i));
+                		zombieAttack(zombie, survivor_list.get(i));
                 		
                 		// TESTING
                 		System.out.println("                    " + zombie.getName() + " is attacking.");
                 		
                 		if (survivor_list.get(i).getHealth() <= 0) {
-                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName() + " with a " + zombie.getWeapon().type);
+                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName());
                 		}
                 	}
                 }
@@ -171,7 +166,7 @@ public class app {
                 for (int i = 0; i < zombie_list.size(); i++) {
                 	// make sure the zombie is alive before allowing the survivor to attack
                 	if (zombie_list.get(i).getHealth() > 0) {
-                		attack(survivor, zombie_list.get(i));
+                		survivorAttack(survivor, zombie_list.get(i));
                 		
                 		// TESTING
                 		System.out.println("                    " + survivor.getName() + " is attacking.");
@@ -234,13 +229,13 @@ public class app {
         }
     }
     
-    /**********
-     * ATTACK
-     **********/
-    private void attack(Character attacker, Character victim) {
+    /******************
+     * SURVIVOR ATTACK
+     ******************/
+    private void survivorAttack(Character survivor, Character zombie) {
     	// check if the victim is still alive;
-    	if (victim.getHealth() > 0) {
-            int weaponAccuracy = attacker.getWeapon().accuracy;
+    	if (zombie.getHealth() > 0) {
+            int weaponAccuracy = survivor.getWeapon().accuracy;
 
             // getting the accuracy of the weapon as a whole number (0-10)
             int accuracyAsWholeNumber = weaponAccuracy / 10;
@@ -252,18 +247,37 @@ public class app {
             // would attack, if randomNumber was between 6-10 we would miss
             if (randomNumber < Math.round(accuracyAsWholeNumber)) {
     	    	// make sure the victim's health will not go below 0 when attacked
-                if (victim.getHealth() - attacker.getWeapon().damage <= 0) {
-                    victim.setHealth(0);
+                if (zombie.getHealth() - survivor.getWeapon().damage <= 0) {
+                    zombie.setHealth(0);
                     
                     // TESTING
-                    victim.setName(victim.getName() + " IS DEAD!");
+                    zombie.setName(zombie.getName() + " IS DEAD!");
                     
                 } else { // the victim doesn't die from the attack
-                    victim.setHealth(victim.getHealth() - attacker.getWeapon().damage);
+                    zombie.setHealth(zombie.getHealth() - survivor.getWeapon().damage);
                 }
             } else {
-                System.out.println(attacker.getName() + "'s Attack on " + victim.getName() + " missed!");
+                System.out.println(survivor.getName() + "'s Attack on " + zombie.getName() + " missed!");
             }
+	    }
+    }
+    
+    /******************
+     * ZOMBIE ATTACK
+     ******************/
+    private void zombieAttack(Character zombie, Character survivor) {
+    	// check if the victim is still alive;
+    	if (survivor.getHealth() > 0) {
+	    	// make sure the victim's health will not go below 0 when attacked
+	        if (survivor.getHealth() - zombie.getAttack() < 0) {
+	        	survivor.setHealth(0);
+                
+                // TESTING
+                survivor.setName(survivor.getName() + " IS DEAD!");
+                
+	        } else { // the victim's health will not go below 0 when attacked
+	        	survivor.setHealth(survivor.getHealth() - zombie.getAttack());
+	        }
 	    }
     }
 }
