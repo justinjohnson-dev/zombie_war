@@ -1,5 +1,5 @@
 public class CommonInfect extends Character {
-	
+
 	static int i = 0;
 
     public CommonInfect() {

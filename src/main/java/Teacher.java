@@ -1,5 +1,5 @@
 public class Teacher extends Character {
-	
+
 	static int i = 0;
 
     public Teacher() {

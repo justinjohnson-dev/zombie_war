@@ -1,5 +1,5 @@
 public class Child extends Character {
-	
+
 	static int i = 0;
 
     public Child() {

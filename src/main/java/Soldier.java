@@ -1,5 +1,5 @@
 public class Soldier extends Character {
-	
+
 	static int i = 0;
 
     public Soldier() {

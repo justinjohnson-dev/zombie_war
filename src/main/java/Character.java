@@ -3,13 +3,21 @@ public class Character {
     protected int attack;
     protected String type;
     protected String name;
-
+    Weapon weapon;
 
     public Character(int health, int attack, String type, String name) {
         this.health = health;
         this.attack = attack;
         this.type = type;
         this.name = name;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon() {
+        this.weapon = Weapon.generateWeapon();
     }
 
     public int getHealth() {
@@ -35,7 +43,7 @@ public class Character {
     public void setType(String type) {
         this.type = type;
     }
-    
+
     public String getName() {
         return name;
     }
