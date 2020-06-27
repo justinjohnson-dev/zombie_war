@@ -144,14 +144,18 @@ public class app {
                 }
                 
                 // Zombie attacks
-                for (int i = 0; i < survivor_list.size(); i++) {
-                	// make sure the survivor is alive before allowing the zombie to attack
-                	if (survivor_list.get(i).getHealth() > 0) {
-                		zombieAttack(zombie, survivor_list.get(i));
-                		if (survivor_list.get(i).getHealth() <= 0) {
-                			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName());
-                		}
-                	}
+                // conditional upon attacking zombie still being alive
+                if (zombie.getHealth() > 0) {
+                	// Zombie attacks
+                    for (int i = 0; i < survivor_list.size(); i++) {
+                    	// make sure the survivor is alive before allowing the zombie to attack
+                    	if (survivor_list.get(i).getHealth() > 0) {
+                    		zombieAttack(zombie, survivor_list.get(i));
+                    		if (survivor_list.get(i).getHealth() <= 0) {
+                    			System.out.println(zombie.getName() + " killed " + survivor_list.get(i).getName());
+                    		}
+                    	}
+                    }
                 }
                 
                 numberOfHealthySurvivors = 0;
